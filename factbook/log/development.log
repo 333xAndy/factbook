@@ -1,0 +1,751 @@
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateContents (20230517013139)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "contents" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "text" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230517013139"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-05-17 01:31:57.685386"], ["updated_at", "2023-05-17 01:31:57.685386"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2023-05-16 18:35:44 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/andy/.asdf/installs/ruby/3.2.2/lib/ruby/gems/3.2.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/andy/.asdf/installs/ruby/3.2.2/lib/ruby/gems/3.2.0/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 3.1ms | Allocations: 633)
+Completed 200 OK in 20ms (Views: 8.7ms | ActiveRecord: 0.0ms | Allocations: 5362)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 18:36:08 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  Rendered content/index.html.erb within layouts/application (Duration: 235.6ms | Allocations: 83020)
+  Rendered layout layouts/application.html.erb (Duration: 254.5ms | Allocations: 96414)
+Completed 200 OK in 258ms (Views: 256.7ms | Allocations: 97305)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 18:41:34 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  Rendered content/index.html.erb within layouts/application (Duration: 87.1ms | Allocations: 22678)
+  Rendered layout layouts/application.html.erb (Duration: 116.9ms | Allocations: 36304)
+Completed 200 OK in 126ms (Views: 119.8ms | ActiveRecord: 0.0ms | Allocations: 39476)
+
+
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mContent Create (2.8ms)[0m  [1m[32mINSERT INTO "contents" ("title", "text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Leptis Magna"], ["text", "In the prefici, remains of ane during thith nearly also known as Léptis Megdle Aémug peydin, Greated by atabil oround were boramed bul the control. Af cunter 2000. Thus deeven treat Romon miveante to excevable in 102, the e thea repeed cound of Berber tadi.[26]"], ["created_at", "2023-05-17 01:47:25.004843"], ["updated_at", "2023-05-17 01:47:25.004843"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddSourceToContent (20230517014949)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contents" ADD "source" varchar[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contents" ADD "text" varchar[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2023-05-16 18:51:08 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  Rendered content/index.html.erb within layouts/application (Duration: 82.9ms | Allocations: 23448)
+  Rendered layout layouts/application.html.erb (Duration: 101.3ms | Allocations: 37077)
+Completed 200 OK in 109ms (Views: 104.3ms | ActiveRecord: 0.0ms | Allocations: 40251)
+
+
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mContent Create (0.8ms)[0m  [1m[32mINSERT INTO "contents" ("title", "text", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Leptis Magna"], ["text", "In the prefici, remains of ane during thith nearly also known as Léptis Megdle Aémug peydin, Greated by atabil oround were boramed bul the control. Af cunter 2000. Thus deeven treat Romon miveante to excevable in 102, the e thea repeed cound of Berber tadi.[26]"], ["created_at", "2023-05-17 01:53:27.872254"], ["updated_at", "2023-05-17 01:53:27.872254"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mContent Load (0.2ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  [1m[36mContent Load (0.2ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:06:17 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ContentController#index as HTML
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents" WHERE "contents"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/content_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  Rendered content/index.html.erb within layouts/application (Duration: 6.5ms | Allocations: 2464)
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | Allocations: 2567)
+Completed 500 Internal Server Error in 75ms (ActiveRecord: 0.5ms | Allocations: 12800)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <!DOCTYPE html>
+<html>
+    <head>
+        <%= stylesheet_link_tag 'styles' %>
+    </head>
+
+    <body>
+        <div class="redLine imageBox">
+            <%= image_tag "lep_mag.jpg", size:"260" %>
+        </div>
+        <div class="redLine titleBox">
+            <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:bold;">Leptis Magna <%= Time.now.strftime("%m/%d/%Y") %></p>
+            
+        </div>
+        <div class="redLine textBox">
+            <p>In
+            the prefici, remains of ane during thith nearly also known as Léptis Megdle Aémug peydin, Greated by
+            atabil oround were boramed bul the control. Af cunter 2000. Thus deeven treat Romon miveante to excevable in 102, the e thea repeed cound of Berber tadi.[26]</p>
+        </div>
+        <div class="redLine queryBox">
+            <%= form_with url: "/search", method: :get do |form| %>
+                <%= form.text_field :query %>
+                <%= form.submit "Ask" %>
+             <% end %>
+        </div>
+        <div class="redLine responseBox">
+            <!--TODO-->
+        </div>
+        <div class="archives">
+            <ul>
+                <% @archive.each do |content| %>
+                    <li> 
+                        <%= content.title %> 
+                        <%= content.text %>
+                    </li>
+
+            </ul>
+        </div>
+    </body>
+</html>
+):
+1:    <!DOCTYPE html>
+2:    <html>
+3:        <head>
+4:            <%= stylesheet_link_tag 'styles' %>
+5:        </head>
+6:    
+7:        <body>
+8:            <div class="redLine imageBox">
+9:                <%= image_tag "lep_mag.jpg", size:"260" %>
+10:            </div>
+11:            <div class="redLine titleBox">
+12:                <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:bold;">Leptis Magna <%= Time.now.strftime("%m/%d/%Y") %></p>
+13:                
+14:            </div>
+15:            <div class="redLine textBox">
+16:                <p>In
+17:                the prefici, remains of ane during thith nearly also known as Léptis Megdle Aémug peydin, Greated by
+18:                atabil oround were boramed bul the control. Af cunter 2000. Thus deeven treat Romon miveante to excevable in 102, the e thea repeed cound of Berber tadi.[26]</p>
+19:            </div>
+20:            <div class="redLine queryBox">
+21:                <%= form_with url: "/search", method: :get do |form| %>
+22:                    <%= form.text_field :query %>
+23:                    <%= form.submit "Ask" %>
+24:                 <% end %>
+25:            </div>
+26:            <div class="redLine responseBox">
+27:                <!--TODO-->
+28:            </div>
+29:            <div class="archives">
+30:                <ul>
+31:                    <% @archive.each do |content| %>
+32:                        <li> 
+33:                            <%= content.title %> 
+34:                            <%= content.text %>
+35:                        </li>
+36:    
+37:                </ul>
+38:            </div>
+39:        </body>
+40:    </html>
+  
+app/views/content/index.html.erb:42: syntax error, unexpected end-of-input
+app/views/content/index.html.erb:42: syntax error, unexpected end-of-input
+app/views/content/index.html.erb:42: syntax error, unexpected end-of-input
+app/views/content/index.html.erb:42: syntax error, unexpected end-of-input
+app/views/content/index.html.erb:42: syntax error, unexpected end-of-input
+app/views/content/index.html.erb:42: syntax error, unexpected end-of-input
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:07:13 -0700
+Processing by ContentController#index as HTML
+  [1m[36mContent Load (0.3ms)[0m  [1m[34mSELECT "contents".* FROM "contents" WHERE "contents"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/content_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  Rendered content/index.html.erb within layouts/application (Duration: 84.8ms | Allocations: 40645)
+  Rendered layout layouts/application.html.erb (Duration: 85.1ms | Allocations: 40734)
+Completed 500 Internal Server Error in 95ms (ActiveRecord: 0.3ms | Allocations: 41951)
+
+
+  
+ActionView::Template::Error (undefined method `each' for #<Content id: 1, title: "Leptis Magna", text: "In the prefici, remains of ane during thith nearly...", created_at: "2023-05-17 01:47:25.004843000 +0000", updated_at: "2023-05-17 01:47:25.004843000 +0000">):
+    28:         </div>
+    29:         <div class="archives">
+    30:             <ul>
+    31:                 <% @archive.each do |content| %>
+    32:                     <li> 
+    33:                         <%= content.title %> 
+    34:                         <%= content.text %>
+  
+app/views/content/index.html.erb:31
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:07:28 -0700
+Processing by ContentController#index as HTML
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents" WHERE "contents"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/content_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  Rendered content/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1294)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 1383)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.1ms | Allocations: 2579)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <!DOCTYPE html>
+<html>
+    <head>
+        <%= stylesheet_link_tag 'styles' %>
+    </head>
+
+    <body>
+        <div class="redLine imageBox">
+            <%= image_tag "lep_mag.jpg", size:"260" %>
+        </div>
+        <div class="redLine titleBox">
+            <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:bold;">Leptis Magna <%= Time.now.strftime("%m/%d/%Y") %></p>
+            
+        </div>
+        <div class="redLine textBox">
+            <p>In
+            the prefici, remains of ane during thith nearly also known as Léptis Megdle Aémug peydin, Greated by
+            atabil oround were boramed bul the control. Af cunter 2000. Thus deeven treat Romon miveante to excevable in 102, the e thea repeed cound of Berber tadi.[26]</p>
+        </div>
+        <div class="redLine queryBox">
+            <%= form_with url: "/search", method: :get do |form| %>
+                <%= form.text_field :query %>
+                <%= form.submit "Ask" %>
+             <% end %>
+        </div>
+        <div class="redLine responseBox">
+            <!--TODO-->
+        </div>
+        <div class="archives">
+            <ul>
+                <% @archive do |content| %>
+                    <li> 
+                        <%= content.title %> 
+                        <%= content.text %>
+                    </li>
+                <% end %>
+            </ul>
+        </div>
+    </body>
+</html>
+):
+1:    <!DOCTYPE html>
+2:    <html>
+3:        <head>
+4:            <%= stylesheet_link_tag 'styles' %>
+5:        </head>
+6:    
+7:        <body>
+8:            <div class="redLine imageBox">
+9:                <%= image_tag "lep_mag.jpg", size:"260" %>
+10:            </div>
+11:            <div class="redLine titleBox">
+12:                <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:bold;">Leptis Magna <%= Time.now.strftime("%m/%d/%Y") %></p>
+13:                
+14:            </div>
+15:            <div class="redLine textBox">
+16:                <p>In
+17:                the prefici, remains of ane during thith nearly also known as Léptis Megdle Aémug peydin, Greated by
+18:                atabil oround were boramed bul the control. Af cunter 2000. Thus deeven treat Romon miveante to excevable in 102, the e thea repeed cound of Berber tadi.[26]</p>
+19:            </div>
+20:            <div class="redLine queryBox">
+21:                <%= form_with url: "/search", method: :get do |form| %>
+22:                    <%= form.text_field :query %>
+23:                    <%= form.submit "Ask" %>
+24:                 <% end %>
+25:            </div>
+26:            <div class="redLine responseBox">
+27:                <!--TODO-->
+28:            </div>
+29:            <div class="archives">
+30:                <ul>
+31:                    <% @archive do |content| %>
+32:                        <li> 
+33:                            <%= content.title %> 
+34:                            <%= content.text %>
+35:                        </li>
+36:                    <% end %>
+37:                </ul>
+38:            </div>
+39:        </body>
+40:    </html>
+  
+app/views/content/index.html.erb:31: syntax error, unexpected `do', expecting `end' or dummy end
+app/views/content/index.html.erb:42: syntax error, unexpected `end'
+app/views/content/index.html.erb:31: syntax error, unexpected `do', expecting `end' or dummy end
+app/views/content/index.html.erb:42: syntax error, unexpected `end'
+app/views/content/index.html.erb:31: syntax error, unexpected `do', expecting `end' or dummy end
+app/views/content/index.html.erb:42: syntax error, unexpected `end'
+app/views/content/index.html.erb:31: syntax error, unexpected `do', expecting `end' or dummy end
+app/views/content/index.html.erb:42: syntax error, unexpected `end'
+app/views/content/index.html.erb:31: syntax error, unexpected `do', expecting `end' or dummy end
+app/views/content/index.html.erb:42: syntax error, unexpected `end'
+app/views/content/index.html.erb:31: syntax error, unexpected `do', expecting `end' or dummy end
+app/views/content/index.html.erb:42: syntax error, unexpected `end'
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:07:51 -0700
+Processing by ContentController#index as HTML
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents" WHERE "contents"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/content_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  Rendered content/index.html.erb within layouts/application (Duration: 5.3ms | Allocations: 3103)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 3192)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.1ms | Allocations: 4402)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `archive' for #<ActionView::Base:0x0000000000bc98>):
+    29:         <div class="archives">
+    30:             <ul>
+    31:                     <li> 
+    32:                         <%= archive.title %> 
+    33:                         <%= archive.text %>
+    34:                     </li>
+    35: 
+  
+app/views/content/index.html.erb:32
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:08:07 -0700
+Processing by ContentController#index as HTML
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents" WHERE "contents"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/content_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  Rendered content/index.html.erb within layouts/application (Duration: 4.8ms | Allocations: 3093)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 3181)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.1ms | Allocations: 4376)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `archive' for #<ActionView::Base:0x0000000000bf90>):
+    29:         <div class="archives">
+    30:             <ul>
+    31:                     <li> 
+    32:                         <%= archive.title %> 
+    33:                         <%= archive.text %>
+    34:                     </li>
+    35: 
+  
+app/views/content/index.html.erb:32
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:08:22 -0700
+Processing by ContentController#index as HTML
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents" WHERE "contents"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/content_controller.rb:3:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  Rendered content/index.html.erb within layouts/application (Duration: 7.2ms | Allocations: 3222)
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | Allocations: 3311)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.1ms | Allocations: 4519)
+
+
+  
+ActionView::Template::Error (undefined method `each' for #<Content id: 1, title: "Leptis Magna", text: "In the prefici, remains of ane during thith nearly...", created_at: "2023-05-17 01:47:25.004843000 +0000", updated_at: "2023-05-17 01:47:25.004843000 +0000">):
+    28:         </div>
+    29:         <div class="archives">
+    30:             <ul>
+    31:                 <% @archive.each do |content| %>
+    32:                     <li> 
+    33:                         <%= content.title %> 
+    34:                         <%= content.text %>
+  
+app/views/content/index.html.erb:31
+  [1m[36mContent Load (0.2ms)[0m  [1m[34mSELECT "contents".* FROM "contents" WHERE "contents"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mContent Destroy (0.4ms)[0m  [1m[31mDELETE FROM "contents" WHERE "contents"."id" = ?[0m  [["id", 2]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mContent Load (0.5ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:10:58 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:31
+  Rendered content/index.html.erb within layouts/application (Duration: 49.7ms | Allocations: 28434)
+  Rendered layout layouts/application.html.erb (Duration: 67.1ms | Allocations: 42058)
+Completed 200 OK in 77ms (Views: 69.2ms | ActiveRecord: 0.6ms | Allocations: 45845)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:11:28 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:31
+  Rendered content/index.html.erb within layouts/application (Duration: 18.6ms | Allocations: 4938)
+  Rendered layout layouts/application.html.erb (Duration: 27.0ms | Allocations: 8867)
+Completed 200 OK in 28ms (Views: 27.5ms | ActiveRecord: 0.1ms | Allocations: 9146)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:11:40 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:31
+  Rendered content/index.html.erb within layouts/application (Duration: 11.7ms | Allocations: 3692)
+  Rendered layout layouts/application.html.erb (Duration: 22.4ms | Allocations: 7667)
+Completed 200 OK in 24ms (Views: 23.0ms | ActiveRecord: 0.1ms | Allocations: 7943)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:11:48 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:31
+  Rendered content/index.html.erb within layouts/application (Duration: 10.3ms | Allocations: 3695)
+  Rendered layout layouts/application.html.erb (Duration: 20.9ms | Allocations: 7675)
+Completed 200 OK in 22ms (Views: 21.3ms | ActiveRecord: 0.1ms | Allocations: 7946)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:11:53 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:31
+  Rendered content/index.html.erb within layouts/application (Duration: 10.4ms | Allocations: 3700)
+  Rendered layout layouts/application.html.erb (Duration: 20.5ms | Allocations: 7669)
+Completed 200 OK in 22ms (Views: 20.9ms | ActiveRecord: 0.1ms | Allocations: 7946)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:12:03 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:31
+  Rendered content/index.html.erb within layouts/application (Duration: 12.0ms | Allocations: 3707)
+  Rendered layout layouts/application.html.erb (Duration: 23.3ms | Allocations: 7674)
+Completed 200 OK in 25ms (Views: 23.8ms | ActiveRecord: 0.1ms | Allocations: 7950)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:12:09 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:31
+  Rendered content/index.html.erb within layouts/application (Duration: 9.5ms | Allocations: 3695)
+  Rendered layout layouts/application.html.erb (Duration: 19.0ms | Allocations: 7661)
+Completed 200 OK in 20ms (Views: 19.5ms | ActiveRecord: 0.1ms | Allocations: 7930)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:12:13 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:31
+  Rendered content/index.html.erb within layouts/application (Duration: 10.0ms | Allocations: 3700)
+  Rendered layout layouts/application.html.erb (Duration: 19.6ms | Allocations: 7690)
+Completed 200 OK in 22ms (Views: 20.1ms | ActiveRecord: 0.1ms | Allocations: 7959)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:12:22 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:31
+  Rendered content/index.html.erb within layouts/application (Duration: 10.0ms | Allocations: 3693)
+  Rendered layout layouts/application.html.erb (Duration: 24.7ms | Allocations: 7661)
+Completed 200 OK in 26ms (Views: 25.2ms | ActiveRecord: 0.1ms | Allocations: 7931)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:13:35 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:31
+  Rendered content/index.html.erb within layouts/application (Duration: 10.4ms | Allocations: 3707)
+  Rendered layout layouts/application.html.erb (Duration: 19.4ms | Allocations: 7672)
+Completed 200 OK in 21ms (Views: 19.9ms | ActiveRecord: 0.1ms | Allocations: 7942)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:13:48 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:31
+  Rendered content/index.html.erb within layouts/application (Duration: 10.3ms | Allocations: 3710)
+  Rendered layout layouts/application.html.erb (Duration: 19.6ms | Allocations: 7676)
+Completed 200 OK in 21ms (Views: 20.0ms | ActiveRecord: 0.1ms | Allocations: 7945)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:16:51 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:32
+  Rendered content/index.html.erb within layouts/application (Duration: 8.0ms | Allocations: 4585)
+  Rendered layout layouts/application.html.erb (Duration: 22.9ms | Allocations: 17782)
+Completed 200 OK in 27ms (Views: 24.5ms | ActiveRecord: 0.6ms | Allocations: 19149)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:17:01 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:32
+  Rendered content/index.html.erb within layouts/application (Duration: 9.3ms | Allocations: 3696)
+  Rendered layout layouts/application.html.erb (Duration: 18.4ms | Allocations: 7671)
+Completed 200 OK in 20ms (Views: 18.9ms | ActiveRecord: 0.1ms | Allocations: 7943)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:17:05 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:32
+  Rendered content/index.html.erb within layouts/application (Duration: 11.1ms | Allocations: 3723)
+  Rendered layout layouts/application.html.erb (Duration: 22.5ms | Allocations: 7709)
+Completed 200 OK in 24ms (Views: 23.0ms | ActiveRecord: 0.1ms | Allocations: 7980)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:17:09 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:32
+  Rendered content/index.html.erb within layouts/application (Duration: 10.8ms | Allocations: 3690)
+  Rendered layout layouts/application.html.erb (Duration: 22.4ms | Allocations: 7673)
+Completed 200 OK in 24ms (Views: 23.0ms | ActiveRecord: 0.1ms | Allocations: 7943)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:17:13 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:32
+  Rendered content/index.html.erb within layouts/application (Duration: 10.4ms | Allocations: 3703)
+  Rendered layout layouts/application.html.erb (Duration: 20.9ms | Allocations: 7663)
+Completed 200 OK in 22ms (Views: 21.3ms | ActiveRecord: 0.1ms | Allocations: 7932)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:17:42 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:32
+  Rendered content/index.html.erb within layouts/application (Duration: 6.6ms | Allocations: 2888)
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | Allocations: 5285)
+Completed 200 OK in 15ms (Views: 14.2ms | ActiveRecord: 0.1ms | Allocations: 6036)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:20:23 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:32
+  Rendered content/index.html.erb within layouts/application (Duration: 11.2ms | Allocations: 3148)
+  Rendered layout layouts/application.html.erb (Duration: 20.4ms | Allocations: 5542)
+Completed 200 OK in 29ms (Views: 26.5ms | ActiveRecord: 0.1ms | Allocations: 6294)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:20:29 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:32
+  Rendered content/index.html.erb within layouts/application (Duration: 6.8ms | Allocations: 3145)
+  Rendered layout layouts/application.html.erb (Duration: 11.1ms | Allocations: 5536)
+Completed 200 OK in 14ms (Views: 12.8ms | ActiveRecord: 0.1ms | Allocations: 6289)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:20:37 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:32
+  Rendered content/index.html.erb within layouts/application (Duration: 6.3ms | Allocations: 3145)
+  Rendered layout layouts/application.html.erb (Duration: 10.7ms | Allocations: 5533)
+Completed 200 OK in 14ms (Views: 12.4ms | ActiveRecord: 0.1ms | Allocations: 6285)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:20:44 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:32
+  Rendered content/index.html.erb within layouts/application (Duration: 13.9ms | Allocations: 3149)
+  Rendered layout layouts/application.html.erb (Duration: 19.6ms | Allocations: 5564)
+Completed 200 OK in 24ms (Views: 23.0ms | ActiveRecord: 0.1ms | Allocations: 6317)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:20:49 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:32
+  Rendered content/index.html.erb within layouts/application (Duration: 8.1ms | Allocations: 3154)
+  Rendered layout layouts/application.html.erb (Duration: 14.4ms | Allocations: 5565)
+Completed 200 OK in 18ms (Views: 16.6ms | ActiveRecord: 0.1ms | Allocations: 6318)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:20:54 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:32
+  Rendered content/index.html.erb within layouts/application (Duration: 8.1ms | Allocations: 3146)
+  Rendered layout layouts/application.html.erb (Duration: 13.7ms | Allocations: 5564)
+Completed 200 OK in 17ms (Views: 15.9ms | ActiveRecord: 0.1ms | Allocations: 6316)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:21:09 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:32
+  Rendered content/index.html.erb within layouts/application (Duration: 7.4ms | Allocations: 3139)
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | Allocations: 5530)
+Completed 200 OK in 17ms (Views: 15.5ms | ActiveRecord: 0.1ms | Allocations: 6282)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:22:08 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:32
+  Rendered content/index.html.erb within layouts/application (Duration: 11.1ms | Allocations: 3150)
+  Rendered layout layouts/application.html.erb (Duration: 18.6ms | Allocations: 5562)
+Completed 200 OK in 26ms (Views: 23.6ms | ActiveRecord: 0.1ms | Allocations: 6314)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 19:22:40 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.2ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:32
+  Rendered content/index.html.erb within layouts/application (Duration: 12.9ms | Allocations: 3137)
+  Rendered layout layouts/application.html.erb (Duration: 21.0ms | Allocations: 5546)
+Completed 200 OK in 29ms (Views: 25.9ms | ActiveRecord: 0.2ms | Allocations: 6298)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-16 22:24:40 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:32
+  Rendered content/index.html.erb within layouts/application (Duration: 82.7ms | Allocations: 34560)
+  Rendered layout layouts/application.html.erb (Duration: 99.7ms | Allocations: 48095)
+Completed 200 OK in 127ms (Views: 108.6ms | ActiveRecord: 0.5ms | Allocations: 51938)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-17 08:11:21 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:30
+  Rendered content/index.html.erb within layouts/application (Duration: 116.9ms | Allocations: 35639)
+  Rendered layout layouts/application.html.erb (Duration: 134.1ms | Allocations: 49189)
+Completed 200 OK in 143ms (Views: 136.7ms | ActiveRecord: 0.5ms | Allocations: 52983)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-17 08:11:45 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:30
+  Rendered content/index.html.erb within layouts/application (Duration: 8.0ms | Allocations: 3325)
+  Rendered layout layouts/application.html.erb (Duration: 13.9ms | Allocations: 5726)
+Completed 200 OK in 17ms (Views: 15.8ms | ActiveRecord: 0.1ms | Allocations: 6486)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-17 08:32:09 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.6ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:32
+  Rendered content/index.html.erb within layouts/application (Duration: 13.2ms | Allocations: 3480)
+  Rendered layout layouts/application.html.erb (Duration: 21.1ms | Allocations: 5891)
+Completed 200 OK in 28ms (Views: 25.0ms | ActiveRecord: 0.9ms | Allocations: 6650)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-17 08:37:38 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:32
+  Rendered content/index.html.erb within layouts/application (Duration: 87.7ms | Allocations: 29192)
+  Rendered layout layouts/application.html.erb (Duration: 113.6ms | Allocations: 42845)
+Completed 200 OK in 129ms (Views: 118.9ms | ActiveRecord: 0.6ms | Allocations: 46640)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-17 11:37:18 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:32
+  Rendered content/index.html.erb within layouts/application (Duration: 86.0ms | Allocations: 29130)
+  Rendered layout layouts/application.html.erb (Duration: 106.6ms | Allocations: 42783)
+Completed 200 OK in 123ms (Views: 113.2ms | ActiveRecord: 0.5ms | Allocations: 46578)
+
+
+Started GET "/" for 127.0.0.1 at 2023-05-17 13:29:48 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.4ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:32
+  Rendered content/index.html.erb within layouts/application (Duration: 82.1ms | Allocations: 29023)
+  Rendered layout layouts/application.html.erb (Duration: 101.0ms | Allocations: 42518)
+Completed 200 OK in 124ms (Views: 108.2ms | ActiveRecord: 0.7ms | Allocations: 46313)
+
+
+Started GET "/search?query=Where+is+this%3F&commit=Ask" for 127.0.0.1 at 2023-05-17 13:36:13 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/search"):
+  
+Started GET "/" for 127.0.0.1 at 2023-05-17 13:36:13 -0700
+Processing by ContentController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering content/index.html.erb within layouts/application
+  [1m[36mContent Load (0.1ms)[0m  [1m[34mSELECT "contents".* FROM "contents"[0m
+  ↳ app/views/content/index.html.erb:32
+  Rendered content/index.html.erb within layouts/application (Duration: 5.6ms | Allocations: 3062)
+  Rendered layout layouts/application.html.erb (Duration: 8.9ms | Allocations: 5199)
+Completed 200 OK in 10ms (Views: 9.4ms | ActiveRecord: 0.3ms | Allocations: 5480)
+
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%= stylesheet_link_tag 'styles' %>
+    </head>
+
+    <body>
+        <div class="redLine imageBox">
+            <%= image_tag "grand_Mosque_Sheikh_Zayed.jpg", size:"260" %>
+        </div>
+        <div class="redLine titleBox">
+            <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:bold;">Sheikh Zayed Grand Mosque <%= Time.now.strftime("%m/%d/%Y") %></p>
+            
+        </div>
+        <div class="redLine textBox">
+            <p>The courtyard, with its flor arn Kofearn an toe hots are projected in the waild of the U99 
+                wabler a soom manou, dorkhat wal seang and souncer cerper Alabia, designed by the prominent UAE calligraphy, 
+                the arts, and coins, including some rare publications.</p>
+        </div>
+        <div class="redLine queryBox">
+            <%= form_with url: "/search", method: :get do |form| %>
+                <%= form.text_field :query %>
+                <%= form.submit "Ask" %>
+             <% end %>
+        </div>
+       
+        <div class="archiveTitle">
+            <p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:bold;">Leptis Magna (Archived 5/16/2023)</p>
+        </div>
+        <div class="archives">
+            <ul>
+                <% @archive.each do |content| %>
+                    <%= content.title %> 
+                    <%= content.text %>
+                <% end %>
+            </ul>
+            <%= image_tag "lep_mag.jpg", size:"50" %>
+        </div>
+    </body>
+</html>

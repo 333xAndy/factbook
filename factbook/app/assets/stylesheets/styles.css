@@ -1,0 +1,76 @@
+body {
+    height: 100%;
+    background: white;
+}
+
+.redLine{outline: white dashed 1px;}
+
+.imageBox{
+    width: 300px;
+    height: 250px;
+    border: 5px solid black;
+    padding: 50px;
+    margin: 20px;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+}
+.titleBox{
+    width: 300px;
+    height: 25px;
+    padding: 10px;
+    margin: 20px;
+    position: absolute;
+    top: 5%;
+    left: 10%;
+}
+.textBox{
+    width: 300px;
+    height: 250px;
+    padding: 50px;
+    border: 5px solid black;
+    margin: 20px;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+}
+.queryBox{
+    width: 300px;
+    height: 25px;
+    padding: 10px;
+    margin-top: 10px;
+    margin: 5px;
+    position: absolute;
+    bottom: 43%;
+    left: 15%;
+}
+.responseBox{
+    width: 300px;
+    height: 25px;
+    padding: 10px;
+    margin: 5px;
+    position: absolute;
+    bottom: 43%;
+    left: 55%;
+}
+
+.archives{
+    width: 300px;
+    height: 25;
+    border: 5px solid black;
+    padding: 50px;
+    margin: 20px;
+    position: absolute;
+    bottom: 0%;
+    left: 10%;
+}
+
+.archiveTitle{
+    width: 300px;
+    height: 25px;
+    padding: 10px;
+    margin: 20px;
+    position: absolute;
+    bottom: 32%;
+    left: 10%;
+}
