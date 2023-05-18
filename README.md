@@ -6,4 +6,4 @@ Ruby on Rails, Python Tensorflow, Keras, HTML, CSS, SQLite
 
 # TODO
 Implement query section that would generate a response using NLP methodologies
-Combine workspaces
+,Combine workspaces
